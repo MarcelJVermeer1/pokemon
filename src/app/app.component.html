@@ -2,14 +2,6 @@
 <img src="/img/Pokédex_logo.png" alt="PokeDex" class="logo" />
 
 
-
-<div class="card-grid">
-  <app-card *ngFor="let p of pokemons" [pokemon]="p"></app-card>
-</div>
+<router-outlet></router-outlet>
 
 
-
-<div class="pagination-buttons">
-  <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
-  <button (click)="nextPage()">Next</button>
-</div>

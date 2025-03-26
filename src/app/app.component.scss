@@ -1,12 +1,3 @@
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); // Fixed 7 columns
-    grid-auto-rows: auto;
-    gap: 1rem;
-    padding: 1rem;
-    justify-items: center;
-  }
-
   .logo {
     display: block;
     margin: 2rem auto; 
@@ -14,35 +5,10 @@
     max-width: 100%;
     height: auto;
   }
-
-
-  .pagination-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-  
-    button {
-      background-color: #ffcb05;
-      color: #3b4cca;
-      padding: 0.5rem 1.5rem;
-      border: none;
-      width: 50%;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-  
-      &:hover {
-        background-color: #ffd836;
-      }
-  
-      &:disabled {
-        background-color: #ddd;
-        cursor: not-allowed;
-      }
+  @media screen and (min-width: 1600px) {
+    .logo {
+      width: 500px;
     }
+    
   }
-  
-  
-  
+

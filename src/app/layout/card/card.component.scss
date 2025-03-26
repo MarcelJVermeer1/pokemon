@@ -1,8 +1,4 @@
 
-a{
-  text-decoration: none;
-}
-
 .pokemon-card {
     background: #edeff2;
     border: 1px solid #e0e0e0;
@@ -32,4 +28,22 @@ a{
         font-weight: 500;
       }
   }
+
+
+  @media screen and (min-width: 1600px) {
+    .pokemon-card {
+      max-width: 150px; 
+      padding: 1.5rem;
+  
+      img {
+        width: 90px;
+        height: 90px;
+      }
+  
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  
   
