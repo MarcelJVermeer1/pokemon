@@ -1,3 +1,6 @@
-
-<img src="" alt="">
-<p></p>
+<a href="">
+  <div class="pokemon-card">
+    <img [src]="pokemon.imageUrl" [alt]="pokemon.name" />
+    <p>{{ pokemon.id }}. {{ pokemon.name | lowercase }}</p>
+  </div>  
+</a>

@@ -1,6 +1,12 @@
 export interface Pokemon {
-    id: number;
+    name: string ;
+    id: number ;
+    imageUrl: string ;
+    isLoaded : boolean;
+}
+
+export interface Pokemons{
     name: string;
-    imageUrl: string;
+    url: string;
 }
 
