@@ -1,8 +1,5 @@
-<div class="pokemon-card" *ngIf="isLoaded" (click)="goToDetails()">
+<div class="pokemon-card" (click)="goToDetails()">
   <img [src]="pokemon.imageUrl" [alt]="pokemon.name" />
   <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
 </div>
 
-<div class="pokemon-card" *ngIf="!isLoaded">
-  <p>Loading...</p>
-</div>

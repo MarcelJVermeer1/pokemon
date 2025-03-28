@@ -8,34 +8,30 @@ import { Pokemon ,Pokemons} from '../../shared/interfaces/pokemon';
 })
 export class PokemonService {
   
-  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=21'; 
+  private baseUrl = 'https://pokeapi.co/api/v2/pokemon?'; 
 
   constructor(private http: HttpClient) { }
-  getPokemonList(offset: number = 0, limit: number = 21): Observable<Pokemons[]> {
-    const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-    return this.http.get<any>(url).pipe(map(res => res.results as Pokemons[]));
-  }
-  
-  
-
-
-  public listOfPokemon(offset: number = 0, limit: number = 21): Observable<Pokemon[]> {
-    const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-  
-    return this.http.get<any>(url).pipe(
-      switchMap(response => {
-        const requests: Observable<Pokemon>[] = response.results.map((pokemon: any) =>
-          this.http.get<any>(pokemon.url).pipe(
-            map(details => ({
-              name: details.name,
-              id: details.id,
-              imageUrl: details.sprites.front_default
-            } as Pokemon))
-          )
-        );
-        return forkJoin(requests);
+  getPokemonList(offset: number = 0, limit: number = 21): Observable<Pokemon[]> {
+    return this.http.get<any>(this.baseUrl+`offset=${offset}&limit=${limit}`).pipe(
+      map(response => {
+        return response.results.map((item: any) => {
+          const id = this.extractIdFromUrl(item.url);
+          return {
+            id: id,
+            name: item.name,
+            imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`,
+            url : item.url
+          } as Pokemon;
+        });
       })
     );
+  }
+  
+  private extractIdFromUrl(url: string): number {
+    //spilt the string url to have array of strings
+    //then we take the second part of the end that we make the id because it a number.
+    const parts = url.split('/');
+    return Number(parts[parts.length - 2]);  
   }
 
   

@@ -1,1 +1,42 @@
-<p>card-details works!</p>
+
+<div>
+    <div>
+        <p>{{pokemonDetails.id}}</p>
+        <p>{{pokemonDetails.name}}</p>
+    </div>
+
+    <div>
+        <img src="{{pokemonDetails.imageUrl}}" alt="{{pokemonDetails.name}}" />
+    </div>
+    <div>
+        <div>
+            <p>Type</p>
+            <li *ngFor="let t of pokemonDetails.types"
+                [ngStyle]="{'background-color': typeColors[t.type.name]}">
+                    {{ t.type.name }}
+            </li>
+
+        </div>
+    </div>
+    <div>
+        <p>Abilities</p>
+        <li *ngFor="let a of pokemonDetails.abilities">
+                {{ a.ability.name }}
+
+        </li>
+    </div>
+    <div>
+        <h4>base States</h4>
+        <ul>
+          <li *ngFor="let s of pokemonDetails.stats">
+            {{ s.stat.name }}: {{ s.base_stat }} (effort: {{ s.effort }})
+          </li>
+        </ul>
+    </div>
+</div>
+
+<div class="evolution-wrapper">
+    <button (click)="goToEvolution()">Evolve ✨</button>
+    <div *ngIf="evolutionFailed" class="fail-animation">❌ No evolution found!</div>
+  </div>
+  

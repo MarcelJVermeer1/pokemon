@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Pokemons} from '../../shared/interfaces/pokemon';
+import { Pokemon} from '../../shared/interfaces/pokemon';
 import { PokemonService } from '../../core/services/pokemon.service';
 import { CardComponent } from '../card/card.component';
 
@@ -14,7 +14,7 @@ import { CardComponent } from '../card/card.component';
 export class CardsLayoutComponent  implements OnInit{
 
 
-  pokemons: Pokemons[] = [];
+  pokemons: Pokemon[] = [];
   currentPage = 0;
   pageSize = 21;
 
@@ -26,7 +26,7 @@ export class CardsLayoutComponent  implements OnInit{
 
   public loadPage(page: number ) {
     const offset = page * this.pageSize;
-
+    //get the pokemon list from the service and subscribe to it.
     this.pokemonService.getPokemonList(offset, this.pageSize).subscribe(pokemons => {
       this.pokemons = pokemons;
       this.currentPage = page;
