@@ -1,36 +1,40 @@
 
-<div>
-    <div>
-        <p>{{pokemonDetails.id}}</p>
-        <p>{{pokemonDetails.name}}</p>
+<div class="card-detail">
+    <div class="card-name">
+        <p>#{{pokemonDetails.id}}</p>
+        <p>{{pokemonDetails.name.toUpperCase()}}</p>
     </div>
 
-    <div>
+    <div class="card-img">
         <img src="{{pokemonDetails.imageUrl}}" alt="{{pokemonDetails.name}}" />
     </div>
     <div>
-        <div>
+        <div class="card-type">
             <p>Type</p>
             <li *ngFor="let t of pokemonDetails.types"
                 [ngStyle]="{'background-color': typeColors[t.type.name]}">
-                    {{ t.type.name }}
+                {{ t.type.name }}
             </li>
 
         </div>
     </div>
-    <div>
+    <div class="card - abilities">
         <p>Abilities</p>
         <li *ngFor="let a of pokemonDetails.abilities">
-                {{ a.ability.name }}
+            {{ a.ability.name }}
+            @if(a.is_hidden) {
+                <p class="hidden">(hidden ability)</p> 
+            }
 
         </li>
     </div>
-    <div>
+    <div class="card-stat">
         <h4>base States</h4>
         <ul>
-          <li *ngFor="let s of pokemonDetails.stats">
-            {{ s.stat.name }}: {{ s.base_stat }} (effort: {{ s.effort }})
-          </li>
+            <li *ngFor="let s of pokemonDetails.stats; let i = index"
+            [ngClass]="'stat' + (i + 1)">
+                {{ s.stat.name }}: {{ s.base_stat }} (effort: {{ s.effort }})
+            </li>
         </ul>
     </div>
 </div>

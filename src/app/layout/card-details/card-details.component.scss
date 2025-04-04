@@ -1,22 +1,76 @@
+.card-detail {
+  margin: auto;
+  display: flex;
+  background-color: greenyellow; // Change later
+  border-radius: 10px;
+  width: 80%;
+  height: 200px;
 
+  .card-name,
+  .card-img,
+  .card-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #46ab68; // Change later
+    border-radius: 10px;
+    margin: 5px 0px 5px 5px;
+    justify-content: center;
+    height: 190px;
+  }
 
+  .card-name {
+    width: 180px;
 
+    p {
+      width: 80%;
+      background-color: white;
+      border-radius: 10px;
+      text-align: center;
+      margin: 1px;
+    }
 
+    p:nth-child(1) {
+      padding: 20px 10px;
+    }
 
+    p:nth-child(2) {
+      padding: 30px 10px;
+    }
+  }
 
+  .card-img {
+    width: 100px;
+    padding: 0 40px;
 
+    img {
+      padding: 25px;
+      background-color: white;
+      border-radius: 10px;
+    }
+  }
+
+  .card-type {
+    width: 80px;
+  }
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 .fail-animation {
-    margin-top: 1rem;
-    color: red;
-    font-weight: bold;
-    animation: shake 0.5s ease;
-  }
-  
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-  }
+  margin-top: 1rem;
+  color: red;
+  font-weight: bold;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}

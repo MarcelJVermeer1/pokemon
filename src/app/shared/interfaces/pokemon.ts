@@ -38,10 +38,9 @@ export interface PokemonDetails {
   export interface PokemonAbility {
     ability: {
       name: string;
-      ishidden: boolean;
       url: string;
     };
-    is_hidden: boolean;
+    is_hidden?: boolean;
     slot: number;
   }
   

@@ -3,12 +3,12 @@ import { Pokemon, PokemonDetails } from '../../shared/interfaces/pokemon';
 import { PokemonStoreServiceService } from '../../core/services/pokemon-store-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [NgIf, NgFor,NgStyle],
+  imports: [NgIf, NgFor,NgStyle,NgClass],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss'
 })
@@ -65,15 +65,21 @@ export class CardDetailsComponent {
       //next is used to make sure that if there is nothing in the pipe we can give error
       next: (data) => {
           // Sort hidden ability first
-          data.abilities.sort((a, b) => {
-            if (a.is_hidden === b.is_hidden) return 0;
-            return a.is_hidden ? -1 : 1; // hidden = first
-          });
+          data.abilities = data.abilities.map(ability => ({
+            ...ability,
+            isHidden: ability.is_hidden // ✅ Properly map the boolean
+        })).sort((a, b) => {
+            if (a.isHidden === b.isHidden) return 0;
+            return a.isHidden ? -1 : 1; // ✅ Hidden abilities go first
+        });
+        
 
           // Assign image and data
           data.imageUrl = data.sprites.back_shiny;
           this.pokemonDetails = data;
-              },
+          console.log(this.pokemonDetails);
+
+        },
       error: () => {
         alert('Deze Pokémon bestaat niet.');
         this.router.navigate(['/']);
