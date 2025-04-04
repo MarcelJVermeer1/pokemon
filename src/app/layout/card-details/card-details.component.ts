@@ -3,12 +3,12 @@ import { Pokemon, PokemonDetails } from '../../shared/interfaces/pokemon';
 import { PokemonStoreServiceService } from '../../core/services/pokemon-store-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgIf, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [NgIf, NgFor,NgStyle,NgClass],
+  imports: [NgIf, NgFor,NgStyle,NgClass,UpperCasePipe],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss'
 })
@@ -67,10 +67,10 @@ export class CardDetailsComponent {
           // Sort hidden ability first
           data.abilities = data.abilities.map(ability => ({
             ...ability,
-            isHidden: ability.is_hidden // ✅ Properly map the boolean
+            isHidden: ability.is_hidden 
         })).sort((a, b) => {
             if (a.isHidden === b.isHidden) return 0;
-            return a.isHidden ? -1 : 1; // ✅ Hidden abilities go first
+            return a.isHidden ? -1 : 1; // hidden abilities first
         });
         
 

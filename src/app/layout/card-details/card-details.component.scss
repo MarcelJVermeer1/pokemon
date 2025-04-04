@@ -7,7 +7,10 @@
   height: 200px;
 
   .card-name,
+  .card-abilities,
   .card-img,
+  .card-stat,
+  .card-stat,
   .card-type {
     display: flex;
     flex-direction: column;
@@ -17,6 +20,10 @@
     margin: 5px 0px 5px 5px;
     justify-content: center;
     height: 190px;
+    h4{
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
   }
 
   .card-name {
@@ -60,6 +67,70 @@ li {
   margin: 0;
   padding: 0;
 }
+
+.card-abilities{
+  width: 30%;
+
+}
+
+
+
+.card-stat {
+  width: 80%;
+
+  ul {
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    padding: 0;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0;
+    gap: 3px;
+  }
+
+  li {
+    list-style: none;
+    border-radius:10px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    min-width: 50px; 
+    transition: transform 0.2s;
+  }
+
+  li:hover {
+    transform: scale(1.05);
+  }
+
+  .number {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .name {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .stat1 { background-color: #ff5959; }    // HP - Red
+  .stat2 { background-color: #f5ac78; }    // Attack - Orange
+  .stat3 { background-color: #fae078; }    // Defense - Yellow
+  .stat4 { background-color: #9db7f5; }    // Special Attack - Blue
+  .stat5 { background-color: #a7db8d; }    // Special Defense - Green
+  .stat6 { background-color: #fa92b2; }    // Speed - Pink
+}
+
+
+
+
 
 .fail-animation {
   margin-top: 1rem;

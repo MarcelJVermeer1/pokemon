@@ -10,7 +10,7 @@
     </div>
     <div>
         <div class="card-type">
-            <p>Type</p>
+            <h4>Type</h4>
             <li *ngFor="let t of pokemonDetails.types"
                 [ngStyle]="{'background-color': typeColors[t.type.name]}">
                 {{ t.type.name }}
@@ -18,8 +18,8 @@
 
         </div>
     </div>
-    <div class="card - abilities">
-        <p>Abilities</p>
+    <div class="card-abilities">
+        <h4>Abilities</h4>
         <li *ngFor="let a of pokemonDetails.abilities">
             {{ a.ability.name }}
             @if(a.is_hidden) {
@@ -29,11 +29,12 @@
         </li>
     </div>
     <div class="card-stat">
-        <h4>base States</h4>
+        <h4>Base States</h4>
         <ul>
             <li *ngFor="let s of pokemonDetails.stats; let i = index"
             [ngClass]="'stat' + (i + 1)">
-                {{ s.stat.name }}: {{ s.base_stat }} (effort: {{ s.effort }})
+            <p class="number">{{ s.base_stat }}</p>
+            <p class="name">{{ s.stat.name | uppercase }}</p>
             </li>
         </ul>
     </div>

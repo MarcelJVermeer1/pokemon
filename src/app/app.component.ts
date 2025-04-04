@@ -16,6 +16,9 @@ export class AppComponent {
     console.log('Routes:', this.router.config);
   }
   
+  public goToHome(){
+    this.router.navigate(['/']);
+  }
 
 }
  
